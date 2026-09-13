@@ -354,17 +354,6 @@ else:
 
 ---
 
-## Modelin Derlenmesi
-
-Model şu şekilde derlenmiştir:
-
-```python
-model_rnn.compile(
-    loss="binary_crossentropy",
-    optimizer="adam",
-    metrics=["accuracy"]
-)
-```
 
 ### Binary Crossentropy
 
@@ -475,6 +464,47 @@ Sonuç: NEGATİF
 ```
 
 Tahmin değerleri her eğitim çalıştırmasında modelin başlangıç ağırlıklarına bağlı olarak değişiklik gösterebilir.
+
+---
+
+## Model Sonuçları
+
+SimpleRNN modeli **50 epoch** boyunca eğitilmiştir. Eğitim sürecinde modelin doğruluk oranının arttığı, loss değerinin ise azaldığı gözlemlenmiştir.
+
+### Eğitim Sonucu
+
+50. epoch sonunda elde edilen eğitim sonuçları:
+
+```text
+Accuracy: 1.0000
+Loss: 0.5200
+```
+
+Model, kullanılan **22 cümlelik eğitim veri seti üzerinde %100 eğitim doğruluğuna** ulaşmıştır.
+
+> **Not:** Bu değer eğitim verileri üzerinden elde edilen doğruluk oranıdır. Projede ayrı bir test veri seti kullanılmamış, model eğitildikten sonra örnek cümleler üzerinden tahminler gerçekleştirilmiştir.
+
+---
+
+### Örnek Tahmin Sonuçları
+
+Eğitim tamamlandıktan sonra model farklı cümleler üzerinde çalıştırılmıştır.
+
+| Test Cümlesi | Tahmin Değeri | Sınıflandırma |
+|---|---:|---|
+| `Bu film çok güzel` | 0.5894 | **POZİTİF** |
+| `Bu film güzel` | 0.5279 | **POZİTİF** |
+| `Bu film çok kötü` | 0.4476 | **NEGATİF** |
+| `Bu film kötü` | 0.3868 | **NEGATİF** |
+
+Modelde **0.5** sınıflandırma eşiği kullanılmıştır:
+
+```text
+Tahmin >= 0.5  →  POZİTİF
+Tahmin < 0.5   →  NEGATİF
+```
+
+Test edilen dört örnek cümle de beklenen sınıfa atanmıştır.
 
 ---
 
