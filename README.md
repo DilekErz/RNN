@@ -20,6 +20,7 @@ Model iki farklı sınıfı tahmin etmektedir:
 Örnek negatif yorumlar:
 
 ```text
+Dilek dedi ki Bu film çok kötü
 Bu film çok kötü
 Hiç beğenmedim
 Film çok sıkıcıydı
@@ -30,6 +31,7 @@ Bu film berbattı
 Örnek pozitif yorumlar:
 
 ```text
+Dilek dedi ki Bu film çok güzel
 Bu film çok güzel
 Çok beğendim
 Film harikaydı
